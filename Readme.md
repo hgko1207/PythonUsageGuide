@@ -7,3 +7,19 @@
 ```bash
 pip install pygame
 ```
+
+## 코딩
+
+### 초기화
+
+```py
+import pygame
+
+pygame.init() # 초기화 (반드시 필요)
+```
+
+### 배경
+
+```py
+
+```
