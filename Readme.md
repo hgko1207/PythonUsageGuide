@@ -1,6 +1,6 @@
 # Python 공부
 
-나도코딩 님의 파이썬 코딩 무료 강의 활용편을 보면서 작성하였습니다.
+유튜브 나도코딩 님의 파이썬 코딩 무료 강의 활용편을 보면서 작성하였습니다.
 
 ## 설치
 
@@ -8,7 +8,7 @@
 pip install pygame
 ```
 
-## 게임 만들기
+## 1. 게임 만들기
 
 ### 초기화
 
@@ -22,3 +22,5 @@ screen_width = 480 # 가로 크기
 screen_height = 640 # 세로 크기
 screen = pygame.display.set_mode((screen_width, screen_height))
 ```
+
+## 2. GUI 만들기
