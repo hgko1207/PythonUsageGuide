@@ -24,3 +24,20 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 ```
 
 ## 2. GUI 만들기
+
+```py
+from tkinter import *
+
+root = Tk()
+root.title("Ko GUI")
+root.geometry("640x480") # 가로 * 세로
+
+btn = Button(root, text="버튼")
+btn.pack()
+
+label = Label(root, text="안녕하세요")
+label.pack()
+
+txt = Text(root, width=30, height=5)
+txt.pack()
+```
