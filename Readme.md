@@ -41,3 +41,15 @@ label.pack()
 txt = Text(root, width=30, height=5)
 txt.pack()
 ```
+
+- Button
+- Lable
+- Text
+- Listbox
+- Checkbox
+- Radiobutton
+- Combobox
+- Progressbar
+- Menu
+- Messagebox
+- Frame
