@@ -25,6 +25,20 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 
 ## 2. GUI 만들기
 
+- Button
+- Lable
+- Text
+- Listbox
+- Checkbox
+- Radiobutton
+- Combobox
+- Progressbar
+- Menu
+- Messagebox
+- Frame
+- Scrollbar
+- Grid
+
 ```py
 from tkinter import *
 
@@ -41,15 +55,3 @@ label.pack()
 txt = Text(root, width=30, height=5)
 txt.pack()
 ```
-
-- Button
-- Lable
-- Text
-- Listbox
-- Checkbox
-- Radiobutton
-- Combobox
-- Progressbar
-- Menu
-- Messagebox
-- Frame
