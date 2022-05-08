@@ -6,7 +6,7 @@ root.title("Ko GUI")
 
 # 파일 프레임 (파일 추가, 선택 삭제)
 file_frame = Frame(root)
-file_frame.pack(fill="x")
+file_frame.pack(fill="x", padx=5, pady=5) # 간격 띄우기
 
 btn_add_file = Button(file_frame, padx=5, pady=5, width=12, text="파일추가")
 btn_add_file.pack(side="left")
@@ -16,7 +16,7 @@ btn_del_file.pack(side="right")
 
 # 리스트 프레임
 list_frame = Frame(root)
-list_frame.pack(fill="both")
+list_frame.pack(fill="both", padx=5, pady=5)
 
 scrollbar = Scrollbar(list_frame)
 scrollbar.pack(side="right", fill="y")
@@ -27,7 +27,7 @@ scrollbar.config(command=list_file.yview)
 
 # 저장 경로 프레임
 path_frame = LabelFrame(root, text="저장경로")
-path_frame.pack(fill="x")
+path_frame.pack(fill="x", padx=5, pady=5)
 
 txt_dest_path = Entry(path_frame)
 txt_dest_path.pack(side="left", fill="x", expand=True, ipady=4)
@@ -37,7 +37,7 @@ btn_dest_path.pack(side="right")
 
 # 옵션 프레임
 frame_option = LabelFrame(root, text="옵션")
-frame_option.pack()
+frame_option.pack(padx=5, pady=5)
 
 # 1. 가로 넓이 옵션
 # 가로 넓이 레이블
@@ -59,7 +59,7 @@ lbl_space.pack(side="left")
 opt_space = ["없음", "좁게", "보통", "넓게"]
 cmb_space = ttk.Combobox(frame_option, state="readonly", values=opt_space, width=10)
 cmb_space.current(0)
-cmb_space.pack(side="left")
+cmb_space.pack(side="left", padx=5, pady=5)
 
 # 3. 파일 포맷 옵션
 # 파일 포맷 옵션 레이블
@@ -70,11 +70,11 @@ lbl_format.pack(side="left")
 opt_format = ["PNG", "JPG", "BMP"]
 cmb_format = ttk.Combobox(frame_option, state="readonly", values=opt_format, width=10)
 cmb_format.current(0)
-cmb_format.pack(side="left")
+cmb_format.pack(side="left", padx=5, pady=5)
 
 # 진행 상황 Progress Bar
 frame_progress = LabelFrame(root, text="진행상황")
-frame_progress.pack(fill="x")
+frame_progress.pack(fill="x", padx=5, pady=5)
 
 p_var = DoubleVar()
 progress_bar = ttk.Progressbar(frame_progress, maximum=100, variable=p_var)
@@ -82,7 +82,7 @@ progress_bar.pack(fill="x")
 
 # 실행 프레임
 frame_run = Frame(root)
-frame_run.pack(fill="x")
+frame_run.pack(fill="x", padx=5, pady=5)
 
 btn_close = Button(frame_run, padx=5, pady=5, text="닫기", width=12, command=root.quit)
 btn_close.pack(side="right")
