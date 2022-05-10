@@ -1,17 +1,82 @@
+import os
 import tkinter.ttk as ttk
-from tkinter import *
+import tkinter.messagebox as msgbox
+from tkinter import * # __all__
+from tkinter import filedialog
+from PIL import Image
 
 root = Tk()
 root.title("Ko GUI")
+
+# 파일 추가
+def add_file():
+    files = filedialog.askopenfilenames(title="이미지 파일을 선택하세요", \
+        filetypes=(("PNG 파일", "*.png"), ("모든 파일", "*.*")), \
+        initialdir=r"C:\Users\hgko\Desktop\project\Python\PythonUsageGuide") # 최초에 C:/ 경로를 보여줌
+
+    # 사용자가 선택한 파일 목록
+    for file in files:
+        list_file.insert(END, file)
+
+# 선택 삭제
+def del_file():
+    for index in reversed(list_file.curselection()):
+        list_file.delete(index)
+
+# 저장 경로 (폴더)
+def browse_dest_path():
+    folder_selected = filedialog.askdirectory()
+    if folder_selected is None: # 사용자가 취소를 누를 때
+        return
+    txt_dest_path.delete(0, END);
+    txt_dest_path.insert(0, folder_selected)
+
+# 이미지 통합
+def merge_image():
+    # print(list_file.get(0, END))
+    images = [Image.open(x) for x in list_file.get(0, END)]
+    widths = [x.size[0] for x in images]
+    heights = [x.size[1] for x in images]
+
+    # 최대 넣ㅂ이, 전체 높이 구해옴
+    max_width, total_height = max(widths), sum(heights)
+
+    # 스케치북 준비
+    result_img = Image.new("RGB", (max_width, total_height), (255, 255, 255)) # 배열
+    y_offset = 0 # y 위치
+    for img in images:
+        result_img.paste(img, (0, y_offset))
+        y_offset += img.size[1] # height 값 만큼 더해줌
+
+    dest_path = os.path.join(txt_dest_path.get(), "ko_photo.jpg")
+    result_img.save(dest_path)
+    msgbox.showinfo("알림", "작업이 완료되었습니다.")
+
+# 시작
+def start():
+    # 각 옵션들 값을 확인
+
+    # 파일 목록 확인
+    if list_file.size() == 0:
+        msgbox.showwarning("경고", "이미지 파일을 추가하세요")
+        return
+
+    # 저장 경로 확인
+    if len(txt_dest_path.get()) == 0:
+        msgbox.showwarning("경고", "저장 경로를 선택하세요")
+        return
+
+    # 이미지 통합 작업
+    merge_image()
 
 # 파일 프레임 (파일 추가, 선택 삭제)
 file_frame = Frame(root)
 file_frame.pack(fill="x", padx=5, pady=5) # 간격 띄우기
 
-btn_add_file = Button(file_frame, padx=5, pady=5, width=12, text="파일추가")
+btn_add_file = Button(file_frame, padx=5, pady=5, width=12, text="파일추가", command=add_file)
 btn_add_file.pack(side="left")
 
-btn_del_file = Button(file_frame, padx=5, pady=5, width=12, text="선택삭제")
+btn_del_file = Button(file_frame, padx=5, pady=5, width=12, text="선택삭제", command=del_file)
 btn_del_file.pack(side="right")
 
 # 리스트 프레임
@@ -32,7 +97,7 @@ path_frame.pack(fill="x", padx=5, pady=5)
 txt_dest_path = Entry(path_frame)
 txt_dest_path.pack(side="left", fill="x", expand=True, padx=5, pady=5, ipady=4)
 
-btn_dest_path = Button(path_frame, text="찾아보기", width=10)
+btn_dest_path = Button(path_frame, text="찾아보기", width=10, command=browse_dest_path)
 btn_dest_path.pack(side="right", padx=5, pady=5)
 
 # 옵션 프레임
@@ -87,7 +152,7 @@ frame_run.pack(fill="x", padx=5, pady=5)
 btn_close = Button(frame_run, padx=5, pady=5, text="닫기", width=12, command=root.quit)
 btn_close.pack(side="right", padx=5, pady=5)
 
-btn_start = Button(frame_run, padx=5, pady=5, text="시작", width=12)
+btn_start = Button(frame_run, padx=5, pady=5, text="시작", width=12, command=start)
 btn_start.pack(side="right", padx=5, pady=5)
 
 root.resizable(False, False)
