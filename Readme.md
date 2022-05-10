@@ -39,7 +39,14 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 - Scrollbar
 - Grid
 
+```bash
+# 설치
+pip install Pillow
+pip install keyboard
+```
+
 ```py
+# 예제
 from tkinter import *
 
 root = Tk()
