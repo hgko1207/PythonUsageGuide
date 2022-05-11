@@ -62,3 +62,9 @@ label.pack()
 txt = Text(root, width=30, height=5)
 txt.pack()
 ```
+
+# 3. 웹 스크래핑
+
+```bash
+pip install requests
+```
