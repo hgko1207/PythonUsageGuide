@@ -67,10 +67,18 @@ txt.pack()
 
 ```bash
 pip install requests
+pip install beautifulsoup4
+pip install lxml
 ```
 
+## 정규식
+
+참고할 정규식 사이트
+
+- https://www.w3schools.com/python/python_regex.asp
+- https://docs.python.org/ko/3/library/re.html
+
 ```py
-# 정규식
 # 1. re.compile("원하는 형태")
 # 2. m = p.match("비교할 문자열") : 주어진 문자열의 처음부터 일치하는지 확인
 # 3. m = p.search("비교할 문자열") : 주어진 문자열 중에 일치하는게 있는지 확인
